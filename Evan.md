@@ -30,18 +30,22 @@ Programs accept input to achieve their intended functionality. **Describe at lea
 - If there are multiple parts to this question, write the part letter with your response.
 
 ```javascript
-function addToDo(event) {
-  DOMSelectors.toDoList.innerHTML = "";
-  const inputtedToDo = DOMSelectors.userInput.value;
-  event.preventDefault();
-  ToDoItems.push(inputtedToDo);
-  displayToDoList(ToDoItems);
-  DOMSelectors.userInput.value = "";
+function removeToDo() {
+  const specificCard = this.parentElement;
+  const specificCardText =
+    specificCard.querySelector(".to-do-card").textContent;
+
+  for (let i = 0; i < ToDoItems.length; i++) {
+    if (ToDoItems[i] === specificCardText) {
+      ToDoItems.splice(i, 1);
+      break;
+    }
+  }
+  specificCard.remove();
 }
 ```
 
-This code makes the variable "inputtedToDo", which is taken from the userInput from the website's HTML corrisponding to DOMSelectors.userInput
-The code would use the user's input and push it into an empty list. It would then make cards using information from the list containing all of the user's inputs before resetting the space where the user would type to input more information.
+This code takes ToDoItems, which is a list of user inputs. While i is less than the length of the user input list, and if that part of the list equals the text content of the card, it will remove the card.
 
 ---
 
@@ -50,25 +54,33 @@ The code would use the user's input and push it into an empty list. It would the
 Refer to your Personalized Project Reference when answering this question.
 
 ```Javascript
+  function removeToDo() {
+    const specificCard = this.parentElement;
+    const specificCardText =
+      specificCard.querySelector(".to-do-card").textContent;
+
     for (let i = 0; i < ToDoItems.length; i++) {
       if (ToDoItems[i] === specificCardText) {
         ToDoItems.splice(i, 1);
         break;
       }
     }
+    specificCard.remove();
+  }
 ```
 
 #### Part (a):
 
 Consider the first iteration statement included in the Procedure section of your Personalized Project Reference. **Describe what is being accomplished by the code in the body of the iteration statement.**
 
-This code takes the length of the list containing all user inputs
+This code takes the length of the list containing all user inputs, and while i is less than the length of the list, run the selection
 
 #### Part (b):
 
 Consider the procedure identified in part (i) of the Procedure section of your Personalized Project Reference.
 
 - Write two calls to your procedure that each cause a different code segment in the procedure to execute.
+
 - Describe the expected behavior of each call. If it is not possible for two calls to your procedure to cause different code segments to execute, explain why this is the case for your procedure.
 
 #### Part (c):
